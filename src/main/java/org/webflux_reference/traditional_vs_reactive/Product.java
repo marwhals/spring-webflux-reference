@@ -1,4 +1,4 @@
-package org.webflux_reference.section_01;
+package org.webflux_reference.traditional_vs_reactive;
 
 public record Product(Integer id,
                       String description,

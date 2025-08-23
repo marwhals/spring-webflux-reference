@@ -1,4 +1,4 @@
-package org.webflux_reference.section_01;
+package org.webflux_reference.traditional_vs_reactive;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
