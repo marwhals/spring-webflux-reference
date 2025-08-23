@@ -63,4 +63,16 @@
   - Repository
     - `@Query`
   - Database client
-- 
+
+---
+
+## Summary
+
+- R2DBC
+  - reactive relational db connectivity
+- R2DBC $\neq$ JPA
+- Spring Data R2DBC
+  - Spring data around R2DBC
+  - Repository / Query Methods / Projection
+- Performance / Scalability / Efficiently using system resources / stream + backpressure
+- Prefer SQL for complex queries
