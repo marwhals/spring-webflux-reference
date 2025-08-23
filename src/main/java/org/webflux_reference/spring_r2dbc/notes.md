@@ -43,3 +43,11 @@
   - Ideally prefer pure functions but use good judgement.
 - Tables and entity object here is mutable
   - See documentation
+
+---
+
+## Pageable
+
+- To request for chunks of data from a larger data set
+  - Page1, Size 10
+  - Sort by Price ascending
