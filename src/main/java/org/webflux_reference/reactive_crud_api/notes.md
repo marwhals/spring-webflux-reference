@@ -29,3 +29,9 @@
     - Customer entity might have password files. CustomerDTO might not have
   - Versioning
   - Validation
+
+---
+
+### CustomerDto vs Mono<CustomerDto>
+
+- One passes an object, another sets up a reactive "pipeline". Clearer when dealing with Flux
