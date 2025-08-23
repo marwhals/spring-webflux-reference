@@ -20,3 +20,8 @@
 ## Bean validation -- see docs !Spring Webflux Validation"
 
 ---
+
+## Summary
+
+- Bean Validation + Webflux
+- Error signals can be caught via Controller Advice and then a appropriate status code can be returned
