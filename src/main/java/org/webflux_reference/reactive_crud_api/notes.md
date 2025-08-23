@@ -7,6 +7,7 @@
 - GET
   - /customers
   - /customers/{id}
+  - /customers/paginated?page=$n$size=$x$
 - POST
   - /customers
 - PUT
@@ -35,3 +36,14 @@
 ### CustomerDto vs Mono<CustomerDto>
 
 - One passes an object, another sets up a reactive "pipeline". Clearer when dealing with Flux
+
+---
+
+### How to return HTTP Status codes
+
+- Mono/Flux are publisher types
+  - data/empty = 200
+  - error = 500
+- ResponseEntity
+  - Mono<ResponseEntity<T>> -- will send appropriate status code. 400,404,429 etc
+- See documentation
