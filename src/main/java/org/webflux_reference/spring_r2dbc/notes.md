@@ -33,3 +33,13 @@
   - expectError()
 - Verify (This is what subscribes and runs the test)
   - verify()
+
+---
+
+## Mutating objects
+
+- Reactive programming is functional style programming for IO
+- Functional programming prefers pure functions with no side effects
+  - Ideally prefer pure functions but use good judgement.
+- Tables and entity object here is mutable
+  - See documentation
