@@ -47,3 +47,25 @@
 - ResponseEntity
   - Mono<ResponseEntity<T>> -- will send appropriate status code. 400,404,429 etc
 - See documentation
+
+---
+
+## Testing
+
+- WebClient
+  - To send non-blocking HTTP requests
+- WebTestClient
+  - To write unit/integration tests
+
+---
+
+### WebTestClient
+
+- client.get()
+  - post()
+  - put()
+  - delete()
+- uri("/path")
+- exchange() -> sends the reqeust and gets the 
+- after exchange() we can assert status, header, response content etc
+- can also use JSON path
