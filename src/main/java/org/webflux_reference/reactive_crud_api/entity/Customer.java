@@ -4,19 +4,11 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
-/**
- * @Entity annotation is not in R2DBC
- * @Table / @Column are not really required here
- * - Can use Lombok here to reduce lines of code
- */
-
-@Table("customer")
 public class Customer {
 
     @Id
     private Integer id;
 
-    @Column("name")
     private String name;
     private String email;
 
