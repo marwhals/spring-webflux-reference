@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.webflux_reference.webfilter.dto.CustomerDto;
 import org.webflux_reference.webfilter.excpetions.ApplicationExceptions;
+import org.webflux_reference.webfilter.filter.Category;
 import org.webflux_reference.webfilter.service.CustomerService;
 import org.webflux_reference.webfilter.validator.RequestValidator;
 import reactor.core.publisher.Flux;
@@ -20,7 +21,8 @@ public class CustomerController {
     private CustomerService customerService;
 
     @GetMapping
-    public Flux<CustomerDto> allCustomers() {
+    public Flux<CustomerDto> allCustomers(@RequestAttribute("category") Category category) { // access attributes in the controller
+
         return this.customerService.getAllCustomers();
     }
 
