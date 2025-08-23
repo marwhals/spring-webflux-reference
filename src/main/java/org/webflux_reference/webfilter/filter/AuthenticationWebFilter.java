@@ -1,5 +1,6 @@
 package org.webflux_reference.webfilter.filter;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,9 @@ import java.util.Objects;
 @Service
 public class AuthenticationWebFilter implements WebFilter {
 
+    @Autowired
+    private FilterErrorHandler errorHandler;
+
     private static final Map<String, Category> TOKEN_CATEGORY_MAP = Map.of(
             "secret123", Category.STANDARD,
             "secret456", Category.PRIME
@@ -27,7 +31,8 @@ public class AuthenticationWebFilter implements WebFilter {
             exchange.getAttributes().put("category", TOKEN_CATEGORY_MAP.get(token));
             return chain.filter(exchange);
         }
-        return Mono.fromRunnable(() -> exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED));
+//        return Mono.fromRunnable(() -> exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED));
+        return errorHandler.sendProblemDetail(exchange, HttpStatus.UNAUTHORIZED, "Set the valid token");
     }
 
 }
