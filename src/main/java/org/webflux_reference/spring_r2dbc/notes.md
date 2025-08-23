@@ -51,3 +51,16 @@
 - To request for chunks of data from a larger data set
   - Page1, Size 10
   - Sort by Price ascending
+
+---
+
+## Complex Queries / Join
+
+- R2DBC prefers simple SQL statement for queries
+  - It is efficient
+  - No N+1 problem
+- Two ways to do this
+  - Repository
+    - `@Query`
+  - Database client
+- 
