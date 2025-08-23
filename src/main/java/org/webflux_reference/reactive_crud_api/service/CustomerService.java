@@ -2,12 +2,14 @@ package org.webflux_reference.reactive_crud_api.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.stereotype.Service;
 import org.webflux_reference.reactive_crud_api.dto.CustomerDto;
 import org.webflux_reference.reactive_crud_api.mapper.EntityDtoMapper;
 import org.webflux_reference.reactive_crud_api.repository.CustomerRepository;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+@Service
 public class CustomerService {
 
     @Autowired
