@@ -1,23 +1,23 @@
 package org.webflux_reference.streaming.mapper;
 
-import org.webflux_reference.streaming.dto.CustomerDto;
-import org.webflux_reference.streaming.entity.Customer;
+import org.webflux_reference.streaming.dto.ProductDto;
+import org.webflux_reference.streaming.entity.Product;
 
 public class EntityDtoMapper {
 
-    public static Customer toEntity(CustomerDto dto){
-        var customer = new Customer();
-        customer.setName(dto.name());
-        customer.setEmail(dto.email());
-        customer.setId(dto.id());
-        return customer;
+    public static Product toEntity(ProductDto dto){
+        var product = new Product();
+        product.setId(dto.id());
+        product.setDescription(dto.description());
+        product.setPrice(dto.price());
+        return product;
     }
 
-    public static CustomerDto toDto(Customer customer){
-        return new CustomerDto(
-                customer.getId(),
-                customer.getName(),
-                customer.getEmail()
+    public static ProductDto toDto(Product product){
+        return new ProductDto(
+                product.getId(),
+                product.getDescription(),
+                product.getPrice()
         );
     }
 
