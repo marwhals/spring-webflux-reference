@@ -6,13 +6,17 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerResponse;
-import org.webflux_reference.input_validation_error_handling.entity.Customer;
+import org.webflux_reference.functional_endpoints.excpetions.CustomerNotFoundException;
+import org.webflux_reference.functional_endpoints.excpetions.InvalidInputException;
 
 @Configuration
 public class RouterConfiguration {
 
     @Autowired
     private CustomerRequestHandler customerRequestHandler;
+
+    @Autowired
+    private ApplicationExceptionHandler exceptionHandler;
 
     @Bean
     public RouterFunction<ServerResponse> customerRoutes() {
@@ -22,6 +26,8 @@ public class RouterConfiguration {
                 .POST("/customers", this.customerRequestHandler::saveCustomer)
                 .PUT("/customers/{id}", this.customerRequestHandler::updateCustomer)
                 .DELETE("/customers/{id}", this.customerRequestHandler::deleteCustomer)
+                .onError(CustomerNotFoundException.class, this.exceptionHandler::handleException)
+                .onError(InvalidInputException.class, this.exceptionHandler::handleException)
                 .build();
     }
 
