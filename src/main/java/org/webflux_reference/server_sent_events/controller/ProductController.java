@@ -22,17 +22,15 @@ public class ProductController {
     @Autowired
     private ProductService service;
 
-    @PostMapping(value = "upload", consumes = MediaType.APPLICATION_NDJSON_VALUE)
-    public Mono<UploadResponse> uploadProducts(@RequestBody Flux<ProductDto> flux) {
-        log.info("invoked");
-        return this.service.saveProducts(flux.doOnNext(dto -> log.info("received: {}", dto)))
-                .then(this.service.getProductsCount())
-                .map(count -> new UploadResponse(UUID.randomUUID(), count));
+
+    @PostMapping
+    public Mono<ProductDto> saveProduct(@RequestBody Mono<ProductDto> mono){
+        return this.service.saveProduct(mono);
     }
 
-    @GetMapping(value = "download", produces = MediaType.APPLICATION_NDJSON_VALUE)
-    public Flux<ProductDto> downloadProducts(){
-        return this.service.allProducts();
+    @GetMapping(value = "stream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public Flux<ProductDto> productStream(){
+        return this.service.productStream();
     }
 
 

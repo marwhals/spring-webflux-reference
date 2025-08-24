@@ -7,6 +7,7 @@ import org.webflux_reference.server_sent_events.mapper.EntityDtoMapper;
 import org.webflux_reference.server_sent_events.repository.ProductRepository;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import reactor.core.publisher.Sinks;
 
 @Service
 public class ProductService {
@@ -14,19 +15,18 @@ public class ProductService {
     @Autowired
     private ProductRepository repository;
 
-    public Flux<ProductDto> saveProducts(Flux<ProductDto> flux) {
-        return flux.map(EntityDtoMapper::toEntity)
-                .as(this.repository::saveAll)
-                .map(EntityDtoMapper::toDto);
+    @Autowired
+    private Sinks.Many<ProductDto> sink;
+
+    public Mono<ProductDto> saveProduct(Mono<ProductDto> mono) {
+        return mono.map(EntityDtoMapper::toEntity)
+                .flatMap(this.repository::save)
+                .map(EntityDtoMapper::toDto)
+                .doOnNext(this.sink::tryEmitNext);
     }
 
-    public Mono<Long> getProductsCount() {
-        return this.repository.count();
-    }
-
-    public Flux<ProductDto> allProducts() {
-        return this.repository.findAll()
-                .map(EntityDtoMapper::toDto);
+    public Flux<ProductDto> productStream() {
+        return this.sink.asFlux();
     }
 
 }
