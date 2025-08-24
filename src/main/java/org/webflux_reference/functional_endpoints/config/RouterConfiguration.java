@@ -27,6 +27,9 @@ public class RouterConfiguration {
                 .DELETE("/customers/{id}", this.customerRequestHandler::deleteCustomer)
                 .onError(CustomerNotFoundException.class, this.exceptionHandler::handleException)
                 .onError(InvalidInputException.class, this.exceptionHandler::handleException)
+                .filter(((request, next) -> {
+                    return ServerResponse.badRequest().build();
+                }))
                 .build();
     }
 
