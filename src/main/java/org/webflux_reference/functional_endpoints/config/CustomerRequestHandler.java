@@ -21,6 +21,14 @@ public class CustomerRequestHandler {
                 .as(flux -> ServerResponse.ok().body(flux, CustomerDto.class));
     }
 
+    public Mono<ServerResponse> paginatedCustomers(ServerRequest request) {
+        var page = request.queryParam("page").map(Integer::parseInt).orElse(1);
+        var size = request.queryParam("size").map(Integer::parseInt).orElse(3);
+        return this.customerService.getAllCustomers(page, size)
+                .collectList()
+                .flatMap(ServerResponse.ok()::bodyValue);
+    }
+
     public Mono<ServerResponse> getCustomer(ServerRequest request) {
         var id = Integer.parseInt(request.pathVariable("id"));
         return this.customerService.getCustomerById(id)

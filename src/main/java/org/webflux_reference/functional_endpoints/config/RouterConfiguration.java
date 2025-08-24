@@ -22,6 +22,7 @@ public class RouterConfiguration {
     public RouterFunction<ServerResponse> customerRoutes() {
         return RouterFunctions.route()
                 .GET("/customers", this.customerRequestHandler::allCustomers)
+                .GET("/customers/paginated", this.customerRequestHandler::paginatedCustomers)
                 .GET("/customers/{id}", this.customerRequestHandler::getCustomer)
                 .POST("/customers", this.customerRequestHandler::saveCustomer)
                 .PUT("/customers/{id}", this.customerRequestHandler::updateCustomer)
