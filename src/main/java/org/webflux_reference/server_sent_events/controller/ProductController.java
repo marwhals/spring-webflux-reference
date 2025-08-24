@@ -6,12 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.webflux_reference.server_sent_events.dto.ProductDto;
-import org.webflux_reference.server_sent_events.dto.UploadResponse;
 import org.webflux_reference.server_sent_events.service.ProductService;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-
-import java.util.UUID;
 
 @RestController
 @RequestMapping("products")

@@ -7,8 +7,8 @@ import org.springframework.data.r2dbc.repository.config.EnableR2dbcRepositories;
 /**
  * Change annotations for respective package
  */
-@SpringBootApplication(scanBasePackages = "org.webflux_reference.streaming")
-@EnableR2dbcRepositories(basePackages = "org.webflux_reference.streaming.repository")
+@SpringBootApplication(scanBasePackages = "org.webflux_reference.server_sent_events")
+@EnableR2dbcRepositories(basePackages = "org.webflux_reference.server_sent_events.repository")
 public class WebFluxPlaygroundApplication {
 
 	public static void main(String[] args) {
