@@ -27,4 +27,14 @@ public class ProductsUploadDownloadTest {
                 .verify();
     }
 
+    @Test
+    public void download() {
+        this.productClient.downloadProducts()
+                .map(ProductDto::toString)
+                .as(flux -> FileWriter.create(flux, Path.of("products.txt")))
+                .as(StepVerifier::create)
+                .expectComplete()
+                .verify();
+    }
+
 }
