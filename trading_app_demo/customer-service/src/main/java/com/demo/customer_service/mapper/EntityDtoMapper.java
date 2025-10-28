@@ -1,7 +1,10 @@
 package com.demo.customer_service.mapper;
 
+import com.demo.customer_service.domain.Ticker;
 import com.demo.customer_service.dto.CustomerInformation;
 import com.demo.customer_service.dto.Holding;
+import com.demo.customer_service.dto.StockTradeRequest;
+import com.demo.customer_service.dto.StockTradeResponse;
 import com.demo.customer_service.entity.Customer;
 import com.demo.customer_service.entity.PortfolioItem;
 
@@ -18,6 +21,26 @@ public class EntityDtoMapper {
                 customer.getName(),
                 customer.getBalance(),
                 holdings
+        );
+    }
+
+    public static PortfolioItem toPortfolioItem(Integer customerId, Ticker ticker){
+        var portfolioItem = new PortfolioItem();
+        portfolioItem.setCustomerId(customerId);
+        portfolioItem.setTicker(ticker);
+        portfolioItem.setQuantity(0);
+        return portfolioItem;
+    }
+
+    public static StockTradeResponse toStockTradeResponse(StockTradeRequest request, Integer customerId, Integer balance){
+        return new StockTradeResponse(
+                customerId,
+                request.ticker(),
+                request.price(),
+                request.quantity(),
+                request.action(),
+                request.totalPrice(),
+                balance
         );
     }
 
