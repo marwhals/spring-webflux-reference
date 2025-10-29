@@ -1,6 +1,6 @@
 package com.aggregator.dto;
 
-import com.customer_service.domain.Ticker;
+import com.aggregator.domain.Ticker;
 
 import java.time.LocalDateTime;
 

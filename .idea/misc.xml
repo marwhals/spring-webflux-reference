@@ -5,6 +5,8 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/trading_app_demo/aggregator-service/pom.xml" />
+        <option value="$PROJECT_DIR$/webflux-reference/pom.xml" />
       </list>
     </option>
   </component>
