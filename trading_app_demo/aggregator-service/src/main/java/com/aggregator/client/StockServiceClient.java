@@ -31,7 +31,7 @@ public class StockServiceClient {
                 .bodyToMono(StockPriceResponse.class);
     }
 
-    public Flux<PriceUpdate> priceUpdateFlux() {
+    public Flux<PriceUpdate> priceUpdatesStream() {
         if(Objects.isNull(this.flux)) {
             this.flux = this.getPriceUpdates();
         }
