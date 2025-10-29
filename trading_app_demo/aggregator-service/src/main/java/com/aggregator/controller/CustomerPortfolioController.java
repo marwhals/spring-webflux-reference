@@ -6,7 +6,6 @@ import com.aggregator.dto.TradeRequest;
 import com.aggregator.service.CustomerPortfolioService;
 import com.aggregator.validator.RequestValidator;
 import org.springframework.web.bind.annotation.*;
-import org.webflux_reference.spring_r2dbc.entity.Customer;
 import reactor.core.publisher.Mono;
 
 @RestController

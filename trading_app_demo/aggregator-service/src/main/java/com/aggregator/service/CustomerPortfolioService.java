@@ -3,8 +3,10 @@ package com.aggregator.service;
 import com.aggregator.client.CustomerServiceClient;
 import com.aggregator.client.StockServiceClient;
 import com.aggregator.dto.*;
+import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
+@Service
 public class CustomerPortfolioService {
 
     private final StockServiceClient stockServiceClient;
