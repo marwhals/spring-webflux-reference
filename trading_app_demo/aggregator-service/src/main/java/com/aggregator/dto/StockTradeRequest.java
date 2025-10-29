@@ -1,7 +1,7 @@
 package com.aggregator.dto;
 
-import com.customer_service.domain.Ticker;
-import com.customer_service.domain.TradeAction;
+import com.aggregator.domain.Ticker;
+import com.aggregator.domain.TradeAction;
 
 public record StockTradeRequest(Ticker ticker,
                                 Integer price,

@@ -13,7 +13,6 @@ import reactor.util.retry.Retry;
 
 import java.time.Duration;
 import java.util.Objects;
-import java.util.function.Predicate;
 
 public class StockServiceClient {
 
